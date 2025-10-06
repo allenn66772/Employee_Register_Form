@@ -14,6 +14,21 @@ const [userInput,setUserInput]=useState ({
   })
   console.log(userInput);
 
+   const clearForm = () => {
+  setUserInput({
+    basicInformation: {
+      username: "",
+      age: "",
+      phone: "",
+      designation: "",
+      salary: ""
+    }
+  });
+};
+
+
+
+
      const showAlert = (e) => {
     e.preventDefault(); // prevent page reload
     const { username, age, phone, designation, salary } =
@@ -24,7 +39,7 @@ const [userInput,setUserInput]=useState ({
     } else {
       alert( 
         `Entered Details: \nName: ${username}\nAge: ${age}\nPhone: ${phone}\nDesignation: ${designation}\nSalary: ${salary}`
-      );
+      );clearForm()
     }
   };
 
@@ -36,7 +51,7 @@ const [userInput,setUserInput]=useState ({
 
     <div>
       <label htmlFor="username" className="block mb-1 text-left font-medium">Name</label>
-      <input  value={userInput.basicInformation.name}  onChange={(e)=>setUserInput({...userInput,basicInformation:{...userInput.basicInformation,username:e.target.value}})}
+      <input  value={userInput.basicInformation.username} onChange={(e)=>setUserInput({...userInput,basicInformation:{...userInput.basicInformation,username:e.target.value}})}
         type="text"
         id="username"
         name="username"
